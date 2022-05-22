@@ -9,16 +9,18 @@ function findItemContent(item) {
     return null;
 }
 
-function findBody(item) {
+function findDivByClassStart(item, classStart) {
     var subitems = item.find("div");
     for (const element of subitems) {
         var subitem = $(element);
-        if (subitem.attr("class").search("iva-item-body-") !== -1) {
+        if (subitem.attr("class").search(classStart) !== -1) {
             return subitem;
         }
     }
     return null;
 }
+
+function findBody(item) { return findDivByClassStart(item, "iva-item-body-"); }
 
 function hideElements(body) {
     var subitems = body.find("div");
@@ -37,6 +39,23 @@ function makeSmall(item) {
     item.css("height", "50px");
 }
 
+function findSlider(item) {
+    if (item === null || item === undefined) {
+        return null;
+    }
+    return findDivByClassStart(item, "iva-item-slider-"); 
+}
+
+function scaleImage(content) {
+    var slider = findSlider(content);
+    slider.css("height", "50px");
+    var slider_item = findDivByClassStart(slider, "photo-slider-item-");
+    if (slider_item === null) {
+        return;
+    }
+    slider_item.css("height", "100px");
+}
+
 function processItem(item) {
     var id = item.attr("data-item-id");
     if (id === null || id === undefined) {
@@ -46,7 +65,6 @@ function processItem(item) {
     if (status === null) {
         item.hover(
             function() {
-                console.log(this);
                 localStorage.setItem(id, 'h');
             },
             function() {
@@ -63,6 +81,7 @@ function processItem(item) {
         return;
     }
     hideElements(body);
+    scaleImage(content);
 }
 
 function onWindowLoad() {
