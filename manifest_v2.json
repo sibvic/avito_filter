@@ -1,7 +1,7 @@
 {
     "name": "Фильтр Авито",
     "short_name": "Фильтр Авито",
-    "description" : "Визуально сокращает просмотренные объявления, и объявления от продавцов из чёрного списка, делая их более компактными. От команды BMIRussian",
+    "description" : "Визуально сокращает просмотренные объявления, и объявления от продавцов из чёрного списка, делая их более компактными",
     "version": "1.0.0",
     "manifest_version": 2,
     "browser_action": {
@@ -20,12 +20,9 @@
         "matches": [ "https://*.avito.ru/*" ],
         "run_at": "document_start"
     }],
-    "key": "ecoacegcjgpmeomgcffhlebibbioncbl",
     "options_page": "options.html",
     "permissions": [
         "storage",
-        "webRequest",
-        "contextMenus",
         "https://*.avito.ru/*"
     ]
 }
