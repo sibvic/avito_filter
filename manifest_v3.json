@@ -2,7 +2,7 @@
     "name": "Фильтр Авито",
     "short_name": "Фильтр Авито",
     "description" : "Визуально сокращает просмотренные объявления.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "manifest_version": 3,
     "action": {
         "default_popup": "main.html",
@@ -22,7 +22,6 @@
     }],
     "options_page": "options.html",
     "permissions": [
-        "storage"
     ],
     "host_permissions": [
         "https://*.avito.ru/*"
