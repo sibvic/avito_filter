@@ -1,3 +1,5 @@
+var options = {};
+
 function findItemContent(item) {
     var subitems = item.find("div");
     for (const element of subitems) {
@@ -27,16 +29,15 @@ function hideElements(body) {
     for (const element of subitems) {
         var subitem = $(element);
         var className = subitem.attr("class");
+        if (className === undefined) {
+            continue;
+        }
         if (className.search("iva-item-descriptionStep-") !== -1
             || className == ""
             || className.search("va-item-dateInfoStep-") !== -1) {
             subitem.hide();
         }
     }
-}
-
-function makeSmall(item) {
-    item.css("height", "50px");
 }
 
 function findSlider(item) {
@@ -80,11 +81,25 @@ function processItem(item) {
     if (body === null) {
         return;
     }
-    hideElements(body);
-    scaleImage(content);
+    markAsRead(body, content);
 }
 
-function onWindowLoad() {
+function addLabel(body, text) {
+    body.prepend("<div><p>" + text + "</p></div>");
+}
+
+function markAsRead(body, content) {
+    if (options.read_show_mode === "minify") {
+        hideElements(body);
+        scaleImage(content);
+    } else {
+        addLabel(body, "ПРОСМОТРЕНО");
+        hideElements(body);
+        scaleImage(content);
+    }
+}
+
+function processAll() {
     var allDivs = $('div');
     for (const element of allDivs) {
         var currentDiv = $(element);
@@ -92,6 +107,15 @@ function onWindowLoad() {
             processItem(currentDiv);
         }
     }
+}
+
+function onWindowLoad() {
+    chrome.storage.sync.get({
+        read_show_mode: "minify"
+    }, function(item) {
+        options = item;
+        processAll();
+    });
 }
 
 window.onload = onWindowLoad;

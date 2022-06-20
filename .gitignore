@@ -1,5 +1,8 @@
 Avito filter/js/jquery
+Avito filter/js/bs
 debug
 *.zip
 screenshots/Безымянный.png
 Avito filter/manifest.json
+node_modules
+Avito filter/css/bs

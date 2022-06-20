@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="css/bs/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="js/bs/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
     <script src="js/jquery/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 
 <div class="">
-    
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="read_show_mode" data-bs-toggle="dropdown" aria-expanded="false">
+            Уменьшать
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="read_show_mode_sel">
+            <li><a class="dropdown-item" href="#">Уменьшать</a></li>
+            <li><a class="dropdown-item" href="#">Уменьшать и добавлять метку</a></li>
+        </ul>
+    </div>
     <br/>
-    <div id="save_button" class="">Save</div>
+    <div id="save_button" class="btn btn-primary">Сохранить</div>
     <div id="error_message" class="" style="display:none"></div>
 
-    <script type="text/javascript" src="/js/common.js"></script>
     <script type="text/javascript" src="/js/options.js"></script>
 </div>
 </body>

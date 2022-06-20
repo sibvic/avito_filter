@@ -2,7 +2,7 @@
     "name": "Фильтр Авито",
     "short_name": "Фильтр Авито",
     "description" : "Визуально сокращает просмотренные объявления.",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "manifest_version": 3,
     "action": {
         "default_popup": "main.html",
@@ -12,9 +12,6 @@
         "48": "icon48.png",
         "128": "icon128.png"
     },
-    "background": {
-        "scripts": [ "js/jquery/jquery-3.1.1.min.js", "js/background.js"]
-    },
     "content_scripts": [ {
         "js": [ "js/jquery/jquery-3.1.1.min.js", "js/content_avito.js" ],
         "matches": [ "https://*.avito.ru/*" ],
@@ -22,6 +19,7 @@
     }],
     "options_page": "options.html",
     "permissions": [
+        "storage"
     ],
     "host_permissions": [
         "https://*.avito.ru/*"
